@@ -1,3 +1,5 @@
+import os
+
 import openai
 
 def get_message_from_complete_gpt_output(gpt_response):
@@ -25,11 +27,14 @@ def get_story_from_openai(prompt):
                 }
             ]
         )
+        message_output = get_message_from_complete_gpt_output(chat_gpt_output)
     except Exception as e:
-        print("ERROR USING ChatCompletion.create")
         print(e)
-        return
-    message_output = get_message_from_complete_gpt_output(chat_gpt_output)
+        print("ERROR USING ChatCompletion.create. Generating a backup story!")
+        file_path = os.path.join(os.path.dirname(__file__), "stories", '0_bird_story_backup.txt')
+        with open(file_path) as f:
+            message_output = f.read()
+
     return message_output
 
 

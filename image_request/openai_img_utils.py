@@ -18,9 +18,10 @@ def get_image_url_from_openai(prompt):
             n=1,
             size=f"256x256"
         )
+        img_url_output = get_image_url_from_complete_gpt_output(chat_gpt_output)
     except Exception as e:
-        print("ERROR USING Image.create")
         print(e)
-        return
-    img_output = get_image_url_from_complete_gpt_output(chat_gpt_output)
-    return img_output
+        print("ERROR USING Image.create, returning a backup url")
+        img_url_output = "https://oli.show/scrapsters/tetrabreeze.jpeg"
+
+    return img_url_output
