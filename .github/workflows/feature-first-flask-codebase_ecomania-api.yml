@@ -61,3 +61,17 @@ jobs:
           app-name: 'ecomania-api'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_089CC8FF5CCB48B490E16D041A569B43 }}
+
+#      - name: Set Web App ACR authentication
+#        uses: Azure/appservice-settings@v1
+#        with:
+#         app-name: 'ecomania-api'
+#         slot-name: 'Production'
+#         app-settings-json: |
+#           [
+#               {
+#                   "name": "TEST_ENV_VARIABLE",
+#                   "value": "bla bla",
+#                   "slotSetting": false
+#               }
+#           ]
