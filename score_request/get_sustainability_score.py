@@ -1,7 +1,7 @@
 import os
 from typing import List
-
 import pandas as pd
+import json
 
 ratings = pd.read_csv(os.path.join(os.path.dirname(__file__), "ratings.csv"))
 SUSTAINABILITY_THRESHOLD = 3.5
@@ -16,7 +16,8 @@ def get_sustainability_score(products_list: List[int]):
     else:
         print(f"ERROR! No products with ids {products_list}")
         score = 0
-    return {
-        "sustainable": score >= SUSTAINABILITY_THRESHOLD,
+
+    return json.dumps({
+        "sustainable": bool(score >= SUSTAINABILITY_THRESHOLD),
         "score": score
-    }
+    })

@@ -35,7 +35,6 @@ def get_sust_score():
 @app.route('/get_story', methods=['POST'])
 def get_story():
     monster_data = request.get_json()
-    print(monster_data)
     response = get_story_api(monster_data)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
