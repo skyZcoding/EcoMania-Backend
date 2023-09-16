@@ -31,7 +31,7 @@ def get_story_from_openai(prompt):
     except Exception as e:
         print(e)
         print("ERROR USING ChatCompletion.create. Generating a backup story!")
-        file_path = os.path.join(os.path.dirname(__file__), "stories", '0_bird_story_backup.txt')
+        file_path = os.path.join(os.path.dirname(__file__), "stories", '1_bird_story_backup.txt')
         with open(file_path) as f:
             message_output = f.read()
 
