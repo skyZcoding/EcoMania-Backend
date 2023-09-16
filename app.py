@@ -4,6 +4,7 @@ import openai
 from flask import Flask, request
 
 from image_request.get_image import get_image_url_api
+from score_request.get_popular_products import get_popular_products
 from score_request.get_sustainability_score import get_sustainability_score
 from story_request.get_story import get_story_api
 from utils.check_env_variables import check_env_variables
@@ -51,3 +52,8 @@ def get_image_dummy():
         "monster_id": 999
     }
     return get_image_url_api(monster_data)
+
+
+@app.route('/get_popular_products')
+def get_popular_prods():
+    return get_popular_products(n_products=50)
