@@ -20,3 +20,7 @@ class TestGetBasicContext(unittest.TestCase):
         
         self.assertTrue(get_sustainability_score(sustainable_basket)["sustainable"])
         self.assertFalse(get_sustainability_score(not_sustainable_basket)["sustainable"])
+
+    def test_get_sust_score_with_non_existent_ids(self):
+        sustainable = get_sustainability_score([0, "ciao"])["sustainable"]
+        self.assertEqual(0, sustainable)
