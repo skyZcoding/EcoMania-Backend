@@ -26,7 +26,7 @@ def get_sust_score():
     return get_sustainability_score(product_data["product_ids"])
 
 
-@app.route('/get_story')
+@app.route('/get_story', methods=['POST'])
 def get_story():
     monster_data = request.get_json()
     return get_story_api(monster_data)
