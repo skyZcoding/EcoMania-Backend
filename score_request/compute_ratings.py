@@ -42,7 +42,7 @@ def merge(args):
     sust_pack = pd.read_csv(os.path.join(data_path, "M-Check_packaging.csv"), sep=";", encoding='latin-1')
     
     # Computing popularity and sustainability of all products
-    columns = ["ID", "Name", "Popularity", "Cargo", "Circularity", "Fish", "Packaging"]
+    columns = ["ID", "Name", "Popularity", "Cargo", "Circularity", "Fish", "Packaging", "image", "image_transparent"]
     data_frame = pd.DataFrame(columns=columns)
     for product_id in tqdm(products, desc="Computing popularity and sustainability"):
         # Getting product name
@@ -57,6 +57,7 @@ def merge(args):
         
         # Getting sustainability scores
         cargo, circ, fish, pack = np.NaN, np.NaN, np.NaN, np.NaN
+        img, img_transp = None, None
         
         # Getting cargo rating
         try:
@@ -75,9 +76,20 @@ def merge(args):
         # Getting product packaging score
         if product_id in sust_pack["Product_number"].values:
             pack = sust_pack[sust_pack["Product_number"] == product_id]["M-Check Packaging"].values[0]
-
+            
+        # Getting product image
+        try:
+            img = products[product_id]["image"]["original"]
+        except Exception:
+            pass
+        
+        try:
+            img_transp = products[product_id]["image_transparent"]["original"]
+        except Exception:
+            pass
+        
         # Adding product to final dataframe
-        data_frame.loc[int(product_id)] = [product_id, name, popularity, cargo, circ, fish, pack]
+        data_frame.loc[int(product_id)] = [product_id, name, popularity, cargo, circ, fish, pack, img, img_transp]
     
     # Sorting dataframe by popularity
     data_frame = data_frame.sort_values(by="Popularity", ascending=False)
