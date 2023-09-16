@@ -1,8 +1,10 @@
+from dotenv import load_dotenv
 from flask import Flask, request
 
 from score_request.get_sustainability_score import get_sustainability_score
 from utils.check_env_variables import check_env_variables
 
+load_dotenv()
 check_env_variables()
 app = Flask(__name__)
 
