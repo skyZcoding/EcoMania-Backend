@@ -1,7 +1,8 @@
 import os
 
 import openai
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 from image_request.get_image import get_image_url_api
 from score_request.get_popular_products import get_popular_products
@@ -13,6 +14,7 @@ check_env_variables()
 
 openai.api_key = os.getenv("OPENAI_KEY")
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins
 
 
 @app.route('/')
@@ -29,7 +31,10 @@ def get_sust_score():
 @app.route('/get_story', methods=['POST'])
 def get_story():
     monster_data = request.get_json()
-    return get_story_api(monster_data)
+    response = get_story_api(monster_data)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @app.route('/get_monster_image_url')
