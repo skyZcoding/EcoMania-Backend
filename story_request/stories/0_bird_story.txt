@@ -3,9 +3,12 @@ to exceed 500 words.
 
 You are addressing to young kids, try to use simple words and a friendly tone.
 
+This is the setting of the story, and you do not have to include it in the story: "
 The setting of the story is the enchanting world of Revive Reef, a mysterious island in the heart of the ocean.
 All the trash that washes ashore is not discarded but given a second chance at life.
-This island is inhabited by toy monsters known as Scrapsters.
+This island is inhabited by toy monsters known as Scrapsters."
+
+The setting is finished, now I tell you the characters and the actual story that you can enrich and improve:
 
 The story is about one Scrapter: the tetrabreeze.
 There are two kids. {your_name} and Fynn.
