@@ -4,9 +4,9 @@ import os
 def get_basic_context_for_monster(monster_id):
     match monster_id:
 
-        case 0:
+        case 1:
             # This is the bird
-            file_path = os.path.join(os.path.dirname(__file__), "stories", '0_bird_story.txt')
+            file_path = os.path.join(os.path.dirname(__file__), "stories", '1_bird_story.txt')
 
         case _:
             print(f"ERROR! NO MONSTER WITH ID {monster_id}")
