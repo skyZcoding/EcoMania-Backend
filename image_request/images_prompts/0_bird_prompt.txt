@@ -1,0 +1,3 @@
+A bird whose body is an aluminium can.
+His feathers are {color} and are made out of tetrapack.
+It should be majestic, and it is 3D art.
