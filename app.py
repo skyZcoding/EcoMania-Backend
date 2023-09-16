@@ -17,46 +17,60 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins
 
 
+
 @app.route('/')
 def hello_world():
     return 'Feel the power of devops!'
 
 
-@app.route('/get_sustainability_score')
+@app.route('/get_sustainability_score', methods=['POST'])
 def get_sust_score():
     product_data = request.get_json()
-    return get_sustainability_score(product_data["product_ids"])
+    response = get_sustainability_score(product_data["product_ids"])
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @app.route('/get_story', methods=['POST'])
 def get_story():
     monster_data = request.get_json()
+    print(monster_data)
     response = get_story_api(monster_data)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 
-@app.route('/get_monster_image_url')
+@app.route('/get_monster_image_url', methods=['POST'])
 def get_monster_image_url():
     monster_data = request.get_json()
-    return get_image_url_api(monster_data)
+    response = get_image_url_api(monster_data)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
-@app.route('/get_story_dummy', methods=['GET'])
+@app.route('/get_story_dummy', methods=['POST'])
 def get_story_dummy():
     monster_data = {
         "monster_id": 999
     }
-    return get_story_api(monster_data)
+    response = get_story_api(monster_data)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
-@app.route('/get_image_url_dummy', methods=['GET'])
+@app.route('/get_image_url_dummy', methods=['POST'])
 def get_image_dummy():
     monster_data = {
         "monster_id": 999
     }
-    return get_image_url_api(monster_data)
+    response = get_image_url_api(monster_data)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @app.route('/get_popular_products')
