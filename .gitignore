@@ -2,6 +2,12 @@
 .DS
 .env
 
+# Dataset directoy
+Migros_case/
+
+# MacOS files
+.DS_Store
+
 ################ DEFAULT GITHUB .gitignore BELOW #####################
 
 # Byte-compiled / optimized / DLL files
